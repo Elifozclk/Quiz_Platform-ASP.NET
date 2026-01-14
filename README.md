@@ -17,52 +17,50 @@ Rapor Sunumu: Proje dosyaları içerisindeki "Elif_Özçelik_Rapor.pdf" dosyası
 
 - [Özellikler](#-özellikler)
 - [Teknoloji Stack](#-teknoloji-stack)
-- [Sistem Mimarisi](#-sistem-mimarisi)
 - [Kurulum](#-kurulum)
 - [API Dokümantasyonu](#-api-dokümantasyonu)
-- [Ekran Görüntüleri](#-ekran-görüntüleri)
 - [Proje Videosu](#-proje-videosu)
 - [Lisans](#-lisans)
 
 ---
 
-## ✨ Özellikler
+##  Özellikler
 
-### 👤 Kullanıcı Özellikleri
-- ✅ Kullanıcı kaydı ve giriş (profil resmi upload)
-- ✅ Profil yönetimi (bio, ilgi alanları, konum)
-- ✅ Şifre değiştirme
-- ✅ Quiz çözme ve sonuç görüntüleme
-- ✅ Quiz geçmişi
-- ✅ Hesap devre dışı bırakma/yeniden aktifleştirme
+### Kullanıcı Özellikleri
+-  Kullanıcı kaydı ve giriş (profil resmi upload)
+-  Profil yönetimi (bio, ilgi alanları, konum)
+-  Şifre değiştirme
+-  Quiz çözme ve sonuç görüntüleme
+-  Quiz geçmişi
+- Hesap devre dışı bırakma/yeniden aktifleştirme
 
-### 📝 Quiz Özellikleri
-- ✅ Kapak görseli ile quiz oluşturma
-- ✅ Rich text editor (CKEditor) ile açıklama
-- ✅ Metin ve görsel soru/şık desteği
-- ✅ JSON-based kişilik puanlama sistemi
-- ✅ Multiple sonuç tipi (puan aralıklarına göre)
-- ✅ Draft/Published durumları
-- ✅ Slug-based URL sistemi
+###  Quiz Özellikleri
+-  Kapak görseli ile quiz oluşturma
+-  Rich text editor (CKEditor) ile açıklama
+-  Metin ve görsel soru/şık desteği
+-  JSON-based kişilik puanlama sistemi
+-  Multiple sonuç tipi (puan aralıklarına göre)
+-  Draft/Published durumları
+-  Slug-based URL sistemi
 
-### 🔧 Admin Özellikleri
-- ✅ Dashboard ile istatistikler
-- ✅ Quiz CRUD işlemleri
-- ✅ Kullanıcı yönetimi
-- ✅ Silme talepleri yönetimi
-- ✅ Cascade delete
-- ✅ İstatistiksel raporlama
+###  Admin Özellikleri
+-  Dashboard ile istatistikler
+-  Quiz CRUD işlemleri
+-  Kullanıcı yönetimi
+-  Silme talepleri yönetimi
+-  Cascade delete
+-  İstatistiksel raporlama
 
-### 🔒 Güvenlik
-- ✅ SHA256 password hashing
-- ✅ Parameterized SQL queries (SQL injection koruması)
-- ✅ Session-based authentication
-- ✅ Role-based access control
-- ✅ File upload validation
+###  Güvenlik
+-  SHA256 password hashing
+-  Parameterized SQL queries (SQL injection koruması)
+-  Session-based authentication
+-  Role-based access control
+-  File upload validation
 
 ---
 
-## 🛠 Teknoloji Stack
+##  Teknoloji Stack
 
 ### Backend
 - **ASP.NET 4.7.2** - Web Forms framework
@@ -78,39 +76,12 @@ Rapor Sunumu: Proje dosyaları içerisindeki "Elif_Özçelik_Rapor.pdf" dosyası
 - **jQuery** - DOM manipulation
 - **CKEditor** - Rich text editor
 
----
 
-## 🏗 Sistem Mimarisi
-
-```
-┌─────────────────────────────────────────────────┐
-│          Presentation Layer (ASPX)              │
-│  ┌──────────┬──────────┬────────────────────┐  │
-│  │  Public  │   User   │       Admin        │  │
-│  │  Pages   │  Pages   │       Pages        │  │
-│  └──────────┴──────────┴────────────────────┘  │
-└────────────────────┬────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────┐
-│             API Layer (Web API 2.0)             │
-│                 AuthController                  │
-│  ┌──────────────────────────────────────────┐  │
-│  │  • Login    • Register    • Profile      │  │
-│  │  • Update   • Delete      • Admin Ops    │  │
-│  └──────────────────────────────────────────┘  │
-└────────────────────┬────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────┐
-│         Data Access Layer (DbHelper)            │
-│                 ADO.NET + MySQL                 │
-└─────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📦 Kurulum
+## Kurulum
 
 ### Gereksinimler
 - Visual Studio 2022 (veya 2019)
@@ -177,7 +148,7 @@ VALUES ('admin', 'admin@example.com', '[SHA256_HASH]', 'admin', 1);
 
 ---
 
-## 🗄️ Veritabanı Şeması
+##  Veritabanı Şeması
 
 ### Tablolar
 
@@ -204,23 +175,9 @@ submissions (1) ─── (N) submissionanswers
 
 ---
 
-## 📸 Ekran Görüntüleri
-
-### Ana Sayfa
-![Ana Sayfa](screenshots/home.png)
-
-### Quiz Çözme
-![Quiz Çözme](screenshots/solve-quiz.png)
-
-### Admin Panel
-![Admin Panel](screenshots/admin-dashboard.png)
-
-### Quiz Oluşturma
-![Quiz Oluşturma](screenshots/quiz-create.png)
-
 ---
 
-## 🎥 Proje Videosu
+##  Proje Videosu
 
 📹 **Detaylı Proje Tanıtım Videosu:** 
 
@@ -234,12 +191,11 @@ Video içeriği: https://drive.google.com/drive/folders/1eLbGl8x_wDEdTDalK4PM2SP
 
 ---
 
-
 **Not:** API, veritabanı ve DbHelpers.cs dosyası yapay zeka kullanılmadan, kendi araştırmalarımla geliştirilmiştir.
 
 ---
 
-## 📁 Proje Yapısı
+##  Proje Yapısı
 
 ```
 QP_WEBPROJECT.vs2/
@@ -284,17 +240,6 @@ QP_WEBPROJECT.vs2/
 
 ---
 
-## 🧪 Test
-
-### Manual Test
-1. Login/Register işlemleri test edildi ✅
-2. Quiz oluşturma ve çözme test edildi ✅
-3. Admin panel işlemleri test edildi ✅
-4. API endpoints Swagger ile test edildi ✅
-5. Dosya upload validasyonu test edildi ✅
-
-
----
 
 ## 🤝 Katkıda Bulunma
 

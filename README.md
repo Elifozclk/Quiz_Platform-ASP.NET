@@ -1,7 +1,8 @@
 # 🎯 Sosyal İçerik & Quiz Platformu
 
 Video Linki: https://drive.google.com/drive/folders/1eLbGl8x_wDEdTDalK4PM2SPmXPPSoQwl?usp=drive_link
-Rapor Sunumu: 
+
+Rapor Sunumu: Proje dosyaları içerisindeki "Elif_Özçelik_Rapor.pdf" dosyası içerisinde mevcut
 
 [![.NET](https://img.shields.io/badge/.NET-4.7.2-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)

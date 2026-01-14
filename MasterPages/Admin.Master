@@ -1,0 +1,403 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs"
+    Inherits="QP_WEBPROJECT.vs2.MasterPages.Admin" %>
+<!DOCTYPE html>
+<html lang="tr">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Paneli - Quiz Platformu</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* GENEL STİLLER */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #EDE5F9;
+            color: #5B0E2D;
+        }
+        
+        .container {
+            padding-bottom: 100px;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* NAVBAR */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        .navbar {
+            background-color: #F6EEF9;
+            box-shadow: 0 2px 8px rgba(91, 14, 45, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: #5B0E2D !important;
+        }
+        
+        .nav-link {
+            color: #5B0E2D !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #8B2248 !important;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* FOOTER */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        footer {
+            background-color: #5B0E2D;
+            color: #FFF4B0;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* YARDIM BUTONU - SAĞ ALT KÖŞE */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        .floating-help-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5B0E2D 0%, #8B2248 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(91, 14, 45, 0.4);
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-help-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(91, 14, 45, 0.6);
+            background: linear-gradient(135deg, #8B2248 0%, #5B0E2D 100%);
+        }
+        
+        .floating-help-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Mobil için */
+        @media (max-width: 768px) {
+            .floating-help-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* YARDIM PANELİ - SAĞDAN KAYAR */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        .help-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .help-panel.active {
+            right: 0;
+        }
+        
+        .help-panel-header {
+            background: linear-gradient(135deg, #5B0E2D 0%, #8B2248 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .help-panel-header h3 {
+            margin: 0;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-help-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: transform 0.2s;
+        }
+        
+        .close-help-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .help-panel-content {
+            padding: 25px;
+            overflow-y: auto;
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .help-panel-content h4 {
+            color: #5B0E2D;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .help-panel-content p {
+            margin-bottom: 15px;
+        }
+        
+        .help-panel-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .help-panel-content li {
+            margin-bottom: 8px;
+        }
+        
+        .help-panel-content .help-tip {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .help-panel-content .help-warning {
+            background: #FFF3CD;
+            border-left: 4px solid #FFC107;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        /* Mobil için */
+        @media (max-width: 768px) {
+            .help-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* OVERLAY (KARARTMA) */
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        .help-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9997;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .help-overlay.active {
+            display: block;
+        }
+    </style>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
+        
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- NAVBAR -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/Pages/Admin/AdminDashboard.aspx">
+                    <i class="fas fa-shield-alt"></i> Admin Paneli
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="adminNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/AdminDashboard.aspx">
+                                <i class="fa fa-gauge"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/QuizManagement.aspx">
+                                <i class="fa fa-list-check"></i> Quiz Yönetimi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/QuizCreate.aspx">
+                                <i class="fa fa-plus-circle"></i> Quiz Oluştur
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/UserManagement.aspx">
+                                <i class="fa fa-users"></i> Kullanıcılar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/AdminProfile.aspx">
+                                <i class="fa fa-id-card"></i> Profil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Pages/Admin/AdminLogout.aspx">
+                                <i class="fa fa-sign-out-alt"></i> Çıkış
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- ANA İÇERİK -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="container mt-4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- FOOTER -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <footer>
+            &copy; <%: DateTime.Now.Year %> Quiz Platformu - Admin Paneli
+        </footer>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- YARDIM SİSTEMİ -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        
+        <!-- Yardım Butonu (Sağ Alt Köşe) -->
+        <div id="floatingHelpButton" class="floating-help-btn" title="Yardım">
+            <i class="fas fa-question"></i>
+        </div>
+
+        <!-- Yardım Paneli (Sağdan Kayan) -->
+        <div id="helpPanel" class="help-panel">
+            <div class="help-panel-header">
+                <h3>
+                    <i class="fas fa-info-circle"></i> 
+                    <asp:ContentPlaceHolder ID="HelpTitle" runat="server">
+                        Yardım
+                    </asp:ContentPlaceHolder>
+                </h3>
+                <button id="closeHelpPanel" class="close-help-btn" type="button" title="Kapat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="help-panel-content">
+                <asp:ContentPlaceHolder ID="HelpContent" runat="server">
+                    <p>Bu sayfa için yardım içeriği henüz eklenmemiş.</p>
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <!-- Overlay (Karartma Katmanı) -->
+        <div id="helpOverlay" class="help-overlay"></div>
+        
+    </form>
+    
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- JAVASCRIPT KÜTÜPHANELERİ -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Yardım Paneli İşlevselliği -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const helpBtn = document.getElementById('floatingHelpButton');
+            const helpPanel = document.getElementById('helpPanel');
+            const helpOverlay = document.getElementById('helpOverlay');
+            const closeBtn = document.getElementById('closeHelpPanel');
+
+            // Yardım butonuna tıklayınca aç
+            if (helpBtn) {
+                helpBtn.addEventListener('click', function () {
+                    helpPanel.classList.add('active');
+                    helpOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Scroll kilitle
+                });
+            }
+
+            // Kapat butonuna tıklayınca kapat
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    helpPanel.classList.remove('active');
+                    helpOverlay.classList.remove('active');
+                    document.body.style.overflow = ''; // Scroll serbest bırak
+                });
+            }
+
+            // Overlay'e tıklayınca kapat
+            if (helpOverlay) {
+                helpOverlay.addEventListener('click', function () {
+                    helpPanel.classList.remove('active');
+                    helpOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // ESC tuşuyla kapat
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && helpPanel && helpPanel.classList.contains('active')) {
+                    helpPanel.classList.remove('active');
+                    helpOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

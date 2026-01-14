@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test Sayfası</h1>
+    
+    <button onclick="testQuizAPI()">Test Quiz API</button>
+    <button onclick="testAuthAPI()">Test Auth API (Mevcut)</button>
+    
+    <pre id="result"></pre>
+    
+    <script>
+        async function testQuizAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Quiz API test ediliyor...\n';
+            
+            try {
+                // Test 1: GET /api/quiz/1
+                resultDiv.textContent += '\n=== TEST 1: GET /api/quiz/1 ===\n';
+                const response1 = await fetch('/api/quiz/1');
+                resultDiv.textContent += 'Status: ' + response1.status + '\n';
+                const data1 = await response1.json();
+                resultDiv.textContent += 'Response: ' + JSON.stringify(data1, null, 2) + '\n';
+                
+                // Test 2: POST /api/quiz/save
+                resultDiv.textContent += '\n=== TEST 2: POST /api/quiz/save ===\n';
+                const response2 = await fetch('/api/quiz/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        QuizId: null,
+                        Title: 'API Test Quiz',
+                        Description: 'Test açıklama',
+                        Status: 'Draft',
+                        CreatedBy: 1
+                    })
+                });
+                resultDiv.textContent += 'Status: ' + response2.status + '\n';
+                const data2 = await response2.json();
+                resultDiv.textContent += 'Response: ' + JSON.stringify(data2, null, 2) + '\n';
+                
+            } catch (error) {
+                resultDiv.textContent += '\nHATA: ' + error.message + '\n';
+            }
+        }
+        
+        async function testAuthAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Auth API test ediliyor...\n';
+            
+            try {
+                const response = await fetch('/api/auth/test');
+                resultDiv.textContent += 'Status: ' + response.status + '\n';
+                const data = await response.json();
+                resultDiv.textContent += 'Response: ' + JSON.stringify(data, null, 2) + '\n';
+            } catch (error) {
+                resultDiv.textContent += 'HATA: ' + error.message + '\n';
+            }
+        }
+    </script>
+</body>
+</html>

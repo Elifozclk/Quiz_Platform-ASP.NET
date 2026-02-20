@@ -1,4 +1,4 @@
-# 🎯 Sosyal İçerik & Quiz Platformu
+#  Sosyal İçerik & Quiz Platformu
 
 Video Linki: https://drive.google.com/drive/folders/1eLbGl8x_wDEdTDalK4PM2SPmXPPSoQwl?usp=drive_link
 
@@ -13,7 +13,7 @@ Rapor Sunumu: Proje dosyaları içerisindeki "Elif_Özçelik_Rapor.pdf" dosyası
 
 ---
 
-## 📖 İçindekiler
+##  İçindekiler
 
 - [Özellikler](#-özellikler)
 - [Teknoloji Stack](#-teknoloji-stack)
@@ -179,7 +179,7 @@ submissions (1) ─── (N) submissionanswers
 
 ##  Proje Videosu
 
-📹 **Detaylı Proje Tanıtım Videosu:** 
+ **Detaylı Proje Tanıtım Videosu:** 
 
 Video içeriği: https://drive.google.com/drive/folders/1eLbGl8x_wDEdTDalK4PM2SPmXPPSoQwl?usp=drive_link
 - Kod yapısı ve mimari anlatımı
@@ -241,7 +241,7 @@ QP_WEBPROJECT.vs2/
 ---
 
 
-## 🤝 Katkıda Bulunma
+##  Katkıda Bulunma
 
 1. Bu repository'yi fork edin
 2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
@@ -251,13 +251,13 @@ QP_WEBPROJECT.vs2/
 
 ---
 
-## 📄 Lisans
+##  Lisans
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ---
 
-## 👨‍💻 Geliştirici
+##  Geliştirici
 
 **[Öğrenci Adı]**
 - 🎓 Ankara Üniversitesi - Mühendislik Fakültesi
@@ -266,14 +266,14 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICE
 
 ---
 
-## 🙏 Teşekkürler
+##  Teşekkürler
 
 - Ankara Üniversitesi Mühendislik Fakültesi
 - Ağ Tabanlı Teknolojiler ve Uygulamaları Dersi
 
 ---
 
-## 📝 Notlar
+##  Notlar
 
 - Bu proje, Ağ Tabanlı Teknolojiler ve Uygulamaları dersi kapsamında final projesi olarak geliştirilmiştir.
 - Proje, ASP.NET Web Forms (2022 ortamı) kullanılarak geliştirilmiştir.
